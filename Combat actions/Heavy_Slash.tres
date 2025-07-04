@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://sk87st8mc580"]
+
+[ext_resource type="Script" uid="uid://do6hskw0xc7o8" path="res://Scripts/Combat_Actions.gd" id="1_yy38j"]
+
+[resource]
+script = ExtResource("1_yy38j")
+display_name = "Thicc Slash"
+description = "Deal 15 damage"
+melee_damage = 15
+heal_amount = 0
+burn_amount = 0
+poison_amount = 0
+base_weight = 150
+metadata/_custom_type_script = "uid://do6hskw0xc7o8"

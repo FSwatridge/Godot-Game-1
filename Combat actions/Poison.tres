@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://dxsghu08bbpix"]
+
+[ext_resource type="Script" uid="uid://do6hskw0xc7o8" path="res://Scripts/Combat_Actions.gd" id="1_6tr03"]
+
+[resource]
+script = ExtResource("1_6tr03")
+display_name = "Poison"
+description = "Cast a poison spell , dealing 5 damage and poison"
+melee_damage = 5
+heal_amount = 0
+burn_amount = 0
+poison_amount = 15
+base_weight = 100
+metadata/_custom_type_script = "uid://do6hskw0xc7o8"

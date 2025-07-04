@@ -1,0 +1,375 @@
+[gd_scene load_steps=37 format=3 uid="uid://b1vta3qdcg411"]
+
+[ext_resource type="Script" uid="uid://dyead520ygp0w" path="res://Scripts/game_manager.gd" id="1_p7iyr"]
+[ext_resource type="Texture2D" uid="uid://bm6lohrbgj4uf" path="res://Sprites/backgroundCastles.png" id="1_yaaox"]
+[ext_resource type="PackedScene" uid="uid://djcmudbd01ccv" path="res://Scenes/character.tscn" id="3_p7iyr"]
+[ext_resource type="Texture2D" uid="uid://vqaygc422bs" path="res://Sprites/Dragon.png" id="4_1x0gq"]
+[ext_resource type="Script" uid="uid://do6hskw0xc7o8" path="res://Scripts/Combat_Actions.gd" id="4_2knu1"]
+[ext_resource type="Texture2D" uid="uid://b3vvbv0l0ka22" path="res://Sprites/slime_green.png" id="4_p7iyr"]
+[ext_resource type="Resource" uid="uid://cvyoihw7dpsd4" path="res://Combat actions/Slash.tres" id="5_p2llw"]
+[ext_resource type="Resource" uid="uid://sk87st8mc580" path="res://Combat actions/Heavy_Slash.tres" id="6_vs43p"]
+[ext_resource type="Resource" uid="uid://c4uct5ljno8kh" path="res://Combat actions/Heal.tres" id="7_16vv3"]
+[ext_resource type="Script" uid="uid://cw70eeyf46tr1" path="res://Scripts/character.gd" id="8_vs43p"]
+[ext_resource type="Script" uid="uid://bd71h3wfd6fd3" path="res://Scripts/healthbar.gd" id="10_16vv3"]
+[ext_resource type="Texture2D" uid="uid://cj60gdtnhwdq6" path="res://Sprites/Reptile.png" id="10_pukkx"]
+[ext_resource type="Script" uid="uid://t5xtb6b84u2t" path="res://Scripts/combat_actions_ui.gd" id="10_vs43p"]
+[ext_resource type="Script" uid="uid://w0kbsjti67rs" path="res://Scripts/combat_action_button.gd" id="11_16vv3"]
+[ext_resource type="Script" uid="uid://c2tlbpx8i6yqv" path="res://Scripts/Character_visual.gd" id="12_pukkx"]
+[ext_resource type="Script" uid="uid://ddtykps5skwgd" path="res://Scripts/end_screen.gd" id="13_lc5bw"]
+[ext_resource type="Script" uid="uid://bdk8lj0e5325h" path="res://Scripts/magic.gd" id="16_lpvq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pukkx"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpvq2"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxp7k"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssypj"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp7uv"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_en0a6"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5vap"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge8kd"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwsdp"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoer7"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvto8"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fmrr"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnha2"]
+atlas = ExtResource("4_p7iyr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7v1va"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pukkx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpvq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxp7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssypj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp7uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_en0a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5vap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge8kd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp7uv")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fwsdp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qoer7")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cvto8")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_5fmrr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_cvto8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_vnha2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc5bw"]
+bg_color = Color(0.39816, 0.57242, 0.222578, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.894118, 0.819608, 0, 1)
+shadow_color = Color(0, 0.47451, 0, 0.6)
+shadow_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1x0gq"]
+bg_color = Color(0.960784, 0.247059, 0.196078, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.894118, 0.819608, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pukkx"]
+font_size = 75
+font_color = Color(1, 0.972549, 1, 1)
+outline_size = 5
+outline_color = Color(1, 1, 0, 1)
+shadow_color = Color(0.0175781, 0.0175781, 0.0175781, 1)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvnha"]
+bg_color = Color(0.0756, 0.036, 0.3, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1x0gq"]
+font_size = 50
+font_color = Color(0, 0.700508, 0.958984, 1)
+outline_size = 5
+outline_color = Color(0.543671, 0, 0.994141, 1)
+shadow_size = 25
+shadow_color = Color(0.0970154, 0.413742, 0.730469, 0.470588)
+
+[node name="Main" type="Node2D" node_paths=PackedStringArray("player_character", "ai_character")]
+script = ExtResource("1_p7iyr")
+player_character = NodePath("player_character")
+ai_character = NodePath("ai_character")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -999
+offset_left = -1234.0
+offset_top = -512.0
+offset_right = 1249.0
+offset_bottom = 512.0
+texture = ExtResource("1_yaaox")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.66, 0.66)
+
+[node name="player_character" parent="." instance=ExtResource("3_p7iyr")]
+position = Vector2(-509, -120)
+is_player = true
+speed = 12
+display_texture = ExtResource("4_1x0gq")
+combat_actions = Array[ExtResource("4_2knu1")]([ExtResource("5_p2llw"), ExtResource("6_vs43p"), ExtResource("7_16vv3")])
+
+[node name="ai_character" type="Node2D" parent="."]
+position = Vector2(547, -105)
+script = ExtResource("8_vs43p")
+cur_health = 30
+max_health = 30
+speed = 10
+facing_left = true
+display_texture = ExtResource("10_pukkx")
+combat_actions = Array[ExtResource("4_2knu1")]([ExtResource("6_vs43p"), ExtResource("5_p2llw"), ExtResource("7_16vv3")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ai_character"]
+position = Vector2(26, -25)
+scale = Vector2(13.75, 16.2656)
+sprite_frames = SubResource("SpriteFrames_7v1va")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.596028
+flip_h = true
+script = ExtResource("12_pukkx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ai_character"]
+
+[node name="Healthbar" type="ProgressBar" parent="ai_character"]
+offset_left = -393.0
+offset_top = 485.0
+offset_right = 228.0
+offset_bottom = 561.0
+pivot_offset = Vector2(1402, -242)
+theme_override_styles/background = SubResource("StyleBoxFlat_lc5bw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1x0gq")
+max_value = 40.0
+rounded = true
+show_percentage = false
+script = ExtResource("10_16vv3")
+metadata/_edit_use_anchors_ = true
+
+[node name="healthtext" type="Label" parent="ai_character/Healthbar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0131579
+anchor_right = 1.0
+anchor_bottom = 1.01316
+offset_left = -5.0
+offset_top = -18.0
+offset_right = -5.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "40/50"
+label_settings = SubResource("LabelSettings_pukkx")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CombatActionsUI" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_right = 225.0
+offset_bottom = 160.0
+grow_horizontal = 2
+script = ExtResource("10_vs43p")
+
+[node name="button_container" type="VBoxContainer" parent="CanvasLayer/CombatActionsUI"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 14.0
+offset_right = 172.0
+offset_bottom = 157.0
+
+[node name="CombatActionButton" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+layout_mode = 2
+text = "Slash"
+script = ExtResource("11_16vv3")
+
+[node name="CombatActionButton2" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+layout_mode = 2
+text = "Heavy Slash"
+script = ExtResource("11_16vv3")
+
+[node name="CombatActionButton3" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+layout_mode = 2
+text = "Heal"
+script = ExtResource("11_16vv3")
+
+[node name="magic_button" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+layout_mode = 2
+text = "Magic"
+script = ExtResource("16_lpvq2")
+
+[node name="fireball_button" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+layout_mode = 2
+text = "Fireball"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CombatActionsUI"]
+layout_mode = 0
+offset_left = 172.0
+offset_top = 2.0
+offset_right = 447.0
+offset_bottom = 161.0
+bbcode_enabled = true
+tab_size = 5
+
+[node name="EndScreen" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = 3.0
+offset_top = -1.0
+offset_right = 1227.0
+offset_bottom = 653.0
+pivot_offset = Vector2(37, 24)
+theme_override_styles/panel = SubResource("StyleBoxFlat_yvnha")
+script = ExtResource("13_lc5bw")
+
+[node name="HeaderText" type="Label" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -229.0
+offset_right = 378.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player has won the game"
+label_settings = SubResource("LabelSettings_1x0gq")
+horizontal_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="CanvasLayer/EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -59.0
+offset_right = 107.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again?"
+
+[node name="MagicActionsUI" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_right = 225.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="button_container" type="VBoxContainer" parent="CanvasLayer/MagicActionsUI"]
+layout_mode = 0
+offset_right = 198.0
+offset_bottom = 162.0
+
+[node name="CombatActionButton4" type="Button" parent="CanvasLayer/MagicActionsUI/button_container"]
+layout_mode = 2
+text = "Fireball"
+
+[node name="CombatActionButton5" type="Button" parent="CanvasLayer/MagicActionsUI/button_container"]
+layout_mode = 2
+text = "Poison"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MagicActionsUI"]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 3.0
+offset_right = 447.0
+offset_bottom = 158.0
+
+[connection signal="pressed" from="CanvasLayer/EndScreen/PlayAgainButton" to="CanvasLayer/EndScreen" method="_on_play_again_button_pressed"]
