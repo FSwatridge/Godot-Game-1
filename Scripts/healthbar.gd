@@ -13,4 +13,3 @@ func _ready ():
 func _update_value (health : int, burn: bool, poison: bool):
 	value = health
 	health_text.text = str(health) + " / " + str(max_value)
-	
