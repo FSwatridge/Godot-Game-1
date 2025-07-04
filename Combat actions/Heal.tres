@@ -10,5 +10,5 @@ melee_damage = 0
 heal_amount = 10
 burn_amount = 0
 poison_amount = 0
-base_weight = 100
+base_weight = 150
 metadata/_custom_type_script = "uid://do6hskw0xc7o8"

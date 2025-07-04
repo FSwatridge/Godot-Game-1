@@ -18,11 +18,11 @@ func _ready():
 	
 	next_turn()
 
-func _on_player_take_damage (health : int):
+func _on_player_take_damage (health : int, burn: bool, poison: bool):
 	if health <= 0:
 		end_game(ai_character)
 
-func _on_ai_take_damage (health : int):
+func _on_ai_take_damage (health : int, burn : bool , poison : bool):
 	if health <= 0:
 		end_game(player_character)
 
@@ -67,7 +67,7 @@ func player_cast_combat_action (action : CombatAction):
 	if player_character != current_character:
 		return
 	
-	player_character.cast_combat_action(action, ai_character)
+	await player_character.cast_combat_action(action, ai_character)
 	player_ui.visible = false
 	await get_tree().create_timer(0.5).timeout
 	next_turn()

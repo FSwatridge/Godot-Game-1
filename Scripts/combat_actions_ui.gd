@@ -8,14 +8,15 @@ var ca_buttons : Array[CombatActionButton]
 
 func _ready():
 	
-	print(button_container.get_children())
-	
 	for child in button_container.get_children():
+		if child is not CombatActionButton:
+			continue
+		
 		ca_buttons.append(child)
 		child.pressed.connect(_button_pressed.bind(child))
 		child.mouse_entered.connect(_button_entered.bind(child))
 		child.mouse_exited.connect(_button_exited.bind(child))
-	print(ca_buttons)
+
 
 		
 func set_combat_actions (actions : Array[CombatAction]):
@@ -29,7 +30,6 @@ func set_combat_actions (actions : Array[CombatAction]):
 	
 		
 func _button_pressed (button : CombatActionButton):
-	print("Button pressed")
 	if(button.text == "Magic"):
 		print("Ha!")
 	else:

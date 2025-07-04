@@ -11,12 +11,12 @@
 [ext_resource type="Resource" uid="uid://c4uct5ljno8kh" path="res://Combat actions/Heal.tres" id="7_16vv3"]
 [ext_resource type="Script" uid="uid://cw70eeyf46tr1" path="res://Scripts/character.gd" id="8_vs43p"]
 [ext_resource type="Script" uid="uid://bd71h3wfd6fd3" path="res://Scripts/healthbar.gd" id="10_16vv3"]
+[ext_resource type="Resource" uid="uid://c48tbf4k0ffrx" path="res://Combat actions/Fireball.tres" id="10_jp7uv"]
 [ext_resource type="Texture2D" uid="uid://cj60gdtnhwdq6" path="res://Sprites/Reptile.png" id="10_pukkx"]
 [ext_resource type="Script" uid="uid://t5xtb6b84u2t" path="res://Scripts/combat_actions_ui.gd" id="10_vs43p"]
 [ext_resource type="Script" uid="uid://w0kbsjti67rs" path="res://Scripts/combat_action_button.gd" id="11_16vv3"]
 [ext_resource type="Script" uid="uid://c2tlbpx8i6yqv" path="res://Scripts/Character_visual.gd" id="12_pukkx"]
 [ext_resource type="Script" uid="uid://ddtykps5skwgd" path="res://Scripts/end_screen.gd" id="13_lc5bw"]
-[ext_resource type="Script" uid="uid://bdk8lj0e5325h" path="res://Scripts/magic.gd" id="16_lpvq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pukkx"]
 atlas = ExtResource("4_p7iyr")
@@ -192,7 +192,7 @@ position = Vector2(-509, -120)
 is_player = true
 speed = 12
 display_texture = ExtResource("4_1x0gq")
-combat_actions = Array[ExtResource("4_2knu1")]([ExtResource("5_p2llw"), ExtResource("6_vs43p"), ExtResource("7_16vv3")])
+combat_actions = Array[ExtResource("4_2knu1")]([ExtResource("5_p2llw"), ExtResource("6_vs43p"), ExtResource("7_16vv3"), ExtResource("10_jp7uv")])
 
 [node name="ai_character" type="Node2D" parent="."]
 position = Vector2(547, -105)
@@ -282,14 +282,10 @@ layout_mode = 2
 text = "Heal"
 script = ExtResource("11_16vv3")
 
-[node name="magic_button" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
-layout_mode = 2
-text = "Magic"
-script = ExtResource("16_lpvq2")
-
-[node name="fireball_button" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
+[node name="CombatActionButton4" type="Button" parent="CanvasLayer/CombatActionsUI/button_container"]
 layout_mode = 2
 text = "Fireball"
+script = ExtResource("11_16vv3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/CombatActionsUI"]
 layout_mode = 0
@@ -341,35 +337,5 @@ offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play Again?"
-
-[node name="MagicActionsUI" type="Panel" parent="CanvasLayer"]
-visible = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -225.0
-offset_right = 225.0
-offset_bottom = 160.0
-grow_horizontal = 2
-
-[node name="button_container" type="VBoxContainer" parent="CanvasLayer/MagicActionsUI"]
-layout_mode = 0
-offset_right = 198.0
-offset_bottom = 162.0
-
-[node name="CombatActionButton4" type="Button" parent="CanvasLayer/MagicActionsUI/button_container"]
-layout_mode = 2
-text = "Fireball"
-
-[node name="CombatActionButton5" type="Button" parent="CanvasLayer/MagicActionsUI/button_container"]
-layout_mode = 2
-text = "Poison"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MagicActionsUI"]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 3.0
-offset_right = 447.0
-offset_bottom = 158.0
 
 [connection signal="pressed" from="CanvasLayer/EndScreen/PlayAgainButton" to="CanvasLayer/EndScreen" method="_on_play_again_button_pressed"]

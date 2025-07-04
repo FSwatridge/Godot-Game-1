@@ -6,9 +6,9 @@
 script = ExtResource("1_dep7m")
 display_name = "Fireball"
 description = "Cast a powerful fireball spell dealing 10 damage and causing burn"
-melee_damage = 10
+melee_damage = 5
 heal_amount = 0
-burn_amount = 8
+burn_amount = 3
 poison_amount = 0
 base_weight = 100
 metadata/_custom_type_script = "uid://do6hskw0xc7o8"

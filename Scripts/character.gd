@@ -1,7 +1,7 @@
 class_name Character
 extends Node2D
 
-signal OnTakeDamage (health : int)
+signal OnTakeDamage (health : int, burn : bool, poison : bool)
 signal OnHeal (health : int)
 signal OnAttack (damage : int)
 
@@ -10,6 +10,8 @@ var rng = RandomNumberGenerator.new()
 
 @export var cur_health : int
 @export var max_health : int
+@export var burnt : bool
+@export var poisoned : bool
 
 @export var speed : int
 @export var facing_left : bool
@@ -42,14 +44,17 @@ func _process (delta):
 
 func take_damage (amount : int , burn : bool , poison : bool):
 	cur_health -= amount
-	OnTakeDamage.emit(cur_health)
+	OnTakeDamage.emit(cur_health,burn,poison)
 	_play_audio(take_damage_sfx)
 
 func take_dot_damage (amount : int , max_tick : int ,  burn : bool , poison : bool):
 	rng.randomize()
 	var ticks = randi_range(0,max_tick)
+	print(ticks)
 	for i in range(0,ticks):
-		take_damage(2,burn,poison)
+		print("call tick")
+		take_damage(amount,burn,poison)
+		await get_tree().create_timer(0.9).timeout
 
 func heal (amount : int):
 	cur_health += amount
@@ -64,6 +69,15 @@ func cast_combat_action (action : CombatAction, opponent : Character):
 	if action.melee_damage > 0:
 		opponent.take_damage(action.melee_damage,false,false)
 		OnAttack.emit(action.melee_damage)
+		
+	if action.burn_amount > 0:
+		print("BURN")
+		await opponent.take_dot_damage(action.burn_amount, 5,true,false)
+		OnAttack.emit(action.burn_amount)
+		
+	if action.poison_amount > 0:
+		opponent.take_damage(action.melee_damage,false,true)
+		OnAttack.emit(action.melee_damage and action.poison_amount)
 	
 	if action.heal_amount > 0:
 		heal(action.heal_amount)
